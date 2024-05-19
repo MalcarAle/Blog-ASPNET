@@ -10,7 +10,7 @@ namespace Blog.Controllers
         [HttpGet("")]
         public IActionResult Get()
         {
-            return Ok();
+            return Ok("Servidor online!");
         }
     }
 }
