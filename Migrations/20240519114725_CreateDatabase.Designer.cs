@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Migrations
 {
     [DbContext(typeof(BlogDataContext))]
-    [Migration("20240518163912_CreateDatabase")]
+    [Migration("20240519114725_CreateDatabase")]
     partial class CreateDatabase
     {
         /// <inheritdoc />
@@ -152,7 +152,10 @@ namespace Blog.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(160)
+                        .HasColumnType("VARCHAR")
+                        .HasColumnName("Email");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -164,7 +167,10 @@ namespace Blog.Migrations
                         .HasColumnName("Name");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("VARCHAR")
+                        .HasColumnName("PasswordHash");
 
                     b.Property<string>("Slug")
                         .IsRequired()
